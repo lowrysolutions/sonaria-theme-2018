@@ -59,3 +59,26 @@ require_once( 'library/responsive-images.php' );
 
 /** If your site requires protocol relative url's for theme assets, uncomment the line below */
 // require_once( 'library/class-foundationpress-protocol-relative-theme-assets.php' );
+
+/**
+ * Determine if we're on Live or Staging
+ * 
+ * @since {{VERSION}}
+ * @return boolean Live (True) or Staging (False)
+ */
+function sonaria_is_live_site() {
+	
+	$site_url = site_url();
+	
+	if ( strpos( $site_url, 'staging' ) === false ) return true;
+	
+	return false;
+	
+}
+
+if ( sonaria_is_live_site() ) : 
+
+	// Includes Google Tag Manager and other stuff we do not necessarily want on Staging
+	require_once( 'library/tracking-scripts.php' );
+
+endif;
