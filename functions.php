@@ -121,5 +121,9 @@ if ( sonaria_is_live_site() ) :
 
 endif;
 
-// Force Revslider to use the Fallback for IE
-require_once( 'library/revslider-ie-fallback.php' );
+if ( function_exists( 'rev_slider_shortcode' ) ) {
+
+	// Force Revslider to use the Fallback for IE
+	require_once( 'library/revslider-ie-fallback.php' );
+	
+}
