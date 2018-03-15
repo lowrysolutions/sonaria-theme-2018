@@ -24,8 +24,8 @@ add_filter( 'do_shortcode_tag', 'sonaria_revslider_ie_fallback', 10, 4 );
  */
 function sonaria_revslider_ie_fallback( $output, $tag, $args, $regex_match_array ) {
 
-	if ( $tag == 'revslider' && 
-		sonaira_detect_ie() ) {
+	if ( $tag == 'rev_slider' && 
+		sonaria_detect_ie() ) {
 
 		extract( shortcode_atts( array( 'alias' => '' ), $args, 'rev_slider' ) );
 		extract( shortcode_atts( array( 'settings' => '' ), $args, 'rev_slider' ) );
@@ -36,7 +36,8 @@ function sonaria_revslider_ie_fallback( $output, $tag, $args, $regex_match_array
 
 		$sliderAlias = ( $alias != '' ) ? $alias : RevSliderFunctions::getVal( $args, 0 );
 
-		$gal_ids = RevSliderFunctionsWP::check_for_shortcodes( $mid_content ); // check for example on gallery shortcode and do stuff
+		$gal_ids = array(); // Can't access this here
+		// $gal_ids = RevSliderFunctionsWP::check_for_shortcodes( $mid_content ); // check for example on gallery shortcode and do stuff
 
 		if ( ! empty( $gal_ids ) ) { // add a gallery based slider
 			$slider = RevSliderOutput::putSlider( $sliderAlias, '', $gal_ids );
