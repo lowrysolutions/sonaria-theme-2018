@@ -76,9 +76,50 @@ function sonaria_is_live_site() {
 	
 }
 
+/**
+ * Return the Version Number for IE. False if not IE.
+ * Based on https://codepen.io/gapcode/pen/vEJNZN
+ *
+ * @since        {{VERSION}}
+ * @return       int|boolean IE Version Number. False if not IE
+ */
+function sonaria_detect_ie() {
+
+	$user_agent = $_SERVER['HTTP_USER_AGENT'];
+
+	// Return the Version Number for IE 10 and Older
+	$msie = strpos( $user_agent, 'MSIE ' );
+	if ( $msie !== false ) {
+		return (int) substr( $user_agent, $msie + 5, strpos( $user_agent, '.', $msie ) );
+	}
+
+	// Return the Version Number for IE 11
+	$trident = strpos( $user_agent, 'Trident/' );
+	if ( $trident !== false ) {
+
+		$rv = strpos( $user_agent, 'rv:' );
+
+		return (int) substr( $user_agent, $rv + 3, strpos( $user_agent, '.', $rv ) );
+
+	}
+
+	// Return the Version Number for Edge, AKA IE 12+
+	$edge = strpos( $user_agent, 'Edge/' );
+	if ( $edge !== false ) {
+		return (int) substr( $user_agent, $edge + 5, strpos( $user_agent, '.', $edge ) );
+	}
+
+	// Not IE
+	return false;
+
+}
+
 if ( sonaria_is_live_site() ) : 
 
 	// Includes Google Tag Manager and other stuff we do not necessarily want on Staging
 	require_once( 'library/tracking-scripts.php' );
 
 endif;
+
+// Force Revslider to use the Fallback for IE
+require_once( 'library/revslider-ie-fallback.php' );
