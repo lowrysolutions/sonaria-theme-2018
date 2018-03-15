@@ -36,8 +36,7 @@ function sonaria_revslider_ie_fallback( $output, $tag, $args, $regex_match_array
 
 		$sliderAlias = ( $alias != '' ) ? $alias : RevSliderFunctions::getVal( $args, 0 );
 
-		$gal_ids = array(); // Can't access this here
-		// $gal_ids = RevSliderFunctionsWP::check_for_shortcodes( $mid_content ); // check for example on gallery shortcode and do stuff
+		$gal_ids = RevSliderFunctionsWP::check_for_shortcodes( $regex_match_array[5] ); // check for example on gallery shortcode and do stuff
 
 		if ( ! empty( $gal_ids ) ) { // add a gallery based slider
 			$slider = RevSliderOutput::putSlider( $sliderAlias, '', $gal_ids );
