@@ -150,7 +150,7 @@ function sonaria_get_phone_number_link( $phone_number, $extension = false, $link
         $trimmed_phone_number = '1' . $trimmed_phone_number;
     }
     else if ( strlen( $trimmed_phone_number ) == 7 ) { // No Country or Area Code
-        $trimmed_phone_number = '1810' . $trimmed_phone_number; // We'll assume 810
+        $trimmed_phone_number = '1877' . $trimmed_phone_number; // We'll assume 877
     }
     
     $tel_link = 'tel:' . $trimmed_phone_number;
