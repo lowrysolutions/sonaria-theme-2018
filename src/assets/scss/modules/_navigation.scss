@@ -56,7 +56,11 @@
 
   .top-bar-title a {
     font-size: 1rem;
-    color: #B9B9B9;
+    color: #fff;
+	  
+	  &:hover {
+		  color: scale-color( #fff, -14% );
+	  }
     padding-left: 1rem;
     line-height: 1.8;
   }
