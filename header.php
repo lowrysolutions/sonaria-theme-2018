@@ -30,6 +30,7 @@
 				<button class="menu-icon" type="button" data-toggle="<?php foundationpress_mobile_menu_id(); ?>"></button>
 				<span class="site-mobile-title title-bar-title">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+					<?php echo sonaria_get_phone_number_link( get_theme_mod( 'sonaria_phone_number', '(810) 867-5309' ) ); ?>
 				</span>
 			</div>
 		</div>
@@ -38,6 +39,7 @@
 			<div class="top-bar-left">
 				<div class="site-desktop-title top-bar-title">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+					<?php echo sonaria_get_phone_number_link( get_theme_mod( 'sonaria_phone_number', '(810) 867-5309' ) ); ?>
 				</div>
 			</div>
 			<div class="top-bar-right">

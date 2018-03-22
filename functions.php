@@ -60,6 +60,9 @@ require_once( 'library/responsive-images.php' );
 /** If your site requires protocol relative url's for theme assets, uncomment the line below */
 // require_once( 'library/class-foundationpress-protocol-relative-theme-assets.php' );
 
+// Include Customizer Additions
+require_once( 'library/customizer.php' );
+
 /**
  * Determine if we're on Live or Staging
  * 
@@ -126,4 +129,48 @@ if ( function_exists( 'rev_slider_shortcode' ) ) {
 	// Force Revslider to use the Fallback for IE
 	require_once( 'library/revslider-ie-fallback.php' );
 	
+}
+
+/**
+ * Returns a nicely formatted tel: link
+ * 
+ * @param		string  $phone_number Phone Number
+ * @param		integer $extension    Phone Extension
+ * @param		string  $link_text    Alternate Link Text
+ * @param		boolean $phone_icon   Show a Phone Icon?
+ *                                            
+ * @since		{{VERSION}}
+ * @return		string  Nicely formatted tel: link
+ */
+function sonaria_get_phone_number_link( $phone_number, $extension = false, $link_text = '', $phone_icon = false ) {
+    
+    $trimmed_phone_number = preg_replace( '/\D/', '', trim( $phone_number ) );
+    
+    if ( strlen( $trimmed_phone_number ) == 10 ) { // No Country Code
+        $trimmed_phone_number = '1' . $trimmed_phone_number;
+    }
+    else if ( strlen( $trimmed_phone_number ) == 7 ) { // No Country or Area Code
+        $trimmed_phone_number = '1810' . $trimmed_phone_number; // We'll assume 810
+    }
+    
+    $tel_link = 'tel:' . $trimmed_phone_number;
+    
+    if ( $link_text == '' ) {
+        
+        $link_text = $phone_number;
+        
+        if ( ( $extension !== false ) && ( $extension !== '' ) ) {
+            $link_text = $link_text . __( ' x ', 'sonaria-theme-2018' ) . $extension;
+        }
+        
+    }
+    
+    if ( ( $extension !== false ) && ( $extension !== '' ) ) {
+        $tel_link = $tel_link . ',' . $extension;
+    }
+    
+    if ( $phone_icon ) $phone_icon = '<span class="fa fa-phone"></span> ';
+    
+    return "<a href='$tel_link' class='phone-number-link'>$phone_icon$link_text</a>";
+    
 }
