@@ -63,6 +63,13 @@ require_once( 'library/responsive-images.php' );
 // Include Customizer Additions
 require_once( 'library/customizer.php' );
 
+// Shortcodes
+require_once( 'library/shortcodes/sonaria-button.php' );
+
+// TinyMCE functionality
+require_once( 'library/admin/tinymce/localization.php' );
+require_once( 'library/admin/tinymce/sonaria-button.php' );
+
 /**
  * Determine if we're on Live or Staging
  * 
