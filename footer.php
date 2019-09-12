@@ -12,7 +12,12 @@
 </div><!-- Close container -->
 	<div class="footer-container">
 		<footer class="footer">
-			<?php dynamic_sidebar( 'footer-widgets' ); ?>
+			<div class="row">
+				<?php dynamic_sidebar( 'footer-widgets' ); ?>
+			</div>
+			<section class="copyright">
+				<pre class=" CodeMirror-line " role="presentation"><strong><span role="presentation">COPYRIGHT © <?php echo date( 'Y' ); ?> • SONARIA, LLC. • ALL RIGHTS RESERVED -- SONARIA AND ALL ASSOCIATED ELEMENTS ARE REGISTERED TRADEMARKS</span></strong></pre>
+			</section>
 		</footer>
 	</div>
 

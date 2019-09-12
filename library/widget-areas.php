@@ -22,8 +22,8 @@ function foundationpress_sidebar_widgets() {
 		'id' => 'footer-widgets',
 		'name' => __( 'Footer widgets', 'sonaria-theme-2018' ),
 		'description' => __( 'Drag widgets to this footer container', 'sonaria-theme-2018' ),
-		'before_widget' => '<section id="%1$s" class="large-4 columns widget %2$s">',
-		'after_widget' => '</section>',
+		'before_widget' => '<div id="%1$s" class="small-12 columns widget %2$s">',
+		'after_widget' => '</div>',
 		'before_title' => '<h6>',
 		'after_title' => '</h6>',
 	));
